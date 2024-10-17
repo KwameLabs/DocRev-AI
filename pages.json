@@ -1,0 +1,26 @@
+{
+    "e0139c24ea75a6b7d603d95b6dbb925d": {
+        "page_script_hash": "e0139c24ea75a6b7d603d95b6dbb925d",
+        "page_name": "test_menu",
+        "icon": "",
+        "script_path": "C:\\MyWorkspace\\streamlit_apps\\DocRev-AI\\system\\test_menu.py"
+    },
+    "2289fa5cb59ed38374ce77be15a37881": {
+        "page_script_hash": "2289fa5cb59ed38374ce77be15a37881",
+        "page_name": "admin",
+        "icon": "",
+        "script_path": "C:\\MyWorkspace\\streamlit_apps\\DocRev-AI\\system\\pages\\admin.py"
+    },
+    "ec69360a421bae0e5573bd09c5abc487": {
+        "page_script_hash": "ec69360a421bae0e5573bd09c5abc487",
+        "page_name": "create_user_account",
+        "icon": "",
+        "script_path": "C:\\MyWorkspace\\streamlit_apps\\DocRev-AI\\system\\pages\\create_user_account.py"
+    },
+    "c43825050de447c15be60239acca1a14": {
+        "page_script_hash": "c43825050de447c15be60239acca1a14",
+        "page_name": "user",
+        "icon": "",
+        "script_path": "C:\\MyWorkspace\\streamlit_apps\\DocRev-AI\\system\\pages\\user.py"
+    }
+}
