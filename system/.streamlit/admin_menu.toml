@@ -1,0 +1,19 @@
+[[pages]]
+path = "pages/admin.py"
+name = "st-pages"
+icon = "📄"
+
+
+[[pages]]
+path = "pages/create_user_account.py"
+name = "Example Two"
+icon = ":material/history:"
+
+[[pages]]
+path = "pages/logout.py"
+name = "Logout"
+icon = ":user:"
+
+
+
+

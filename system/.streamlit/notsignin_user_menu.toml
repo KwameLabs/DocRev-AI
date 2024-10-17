@@ -1,0 +1,14 @@
+[[pages]]
+name = "Cool apps"
+icon = ":material/history:"
+is_section = true
+
+
+[[pages]]
+path = "home.py"
+name = "Reviewer"
+icon = "📄"
+
+
+
+
