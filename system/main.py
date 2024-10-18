@@ -810,7 +810,7 @@ if st.session_state.page == "Document Upload & Chat":
         text_chunks = get_text_chunks(text)
     
         
-        vectorstore = get_vectorstore4(text_chunks)
+        vectorstore = get_vectorstore2(text_chunks)
         
         # Save the vector store
         vectorstore.save_local("faiss_index_ivfflat")
