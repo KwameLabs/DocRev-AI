@@ -796,7 +796,7 @@ if st.session_state.page == "Document Upload & Chat":
             # p.start()
             # p.join()
             
-        if st.session_state["review_advisory"] is None:
+        if st.session_state["review_advisory"] is None and result:
             st.session_state["review_advisory"] = result['answer']
         
         
