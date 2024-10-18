@@ -70,7 +70,7 @@ pdf_docs = bytes()
 
 # logo
 
-#st.logo("images/DocRev-AI_Assistant_label.png", icon_image="images/DocRev-AI_logo.png")
+st.logo("images/DocRev-AI_Assistant_label.png", icon_image="images/DocRev-AI_logo.png")
 
 
 
