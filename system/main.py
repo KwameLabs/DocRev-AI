@@ -74,6 +74,7 @@ pdf_docs = bytes()
 
 
 
+
 st.set_page_config(
     page_title="Public Policy Document Review System",
     page_icon="👀",
@@ -796,7 +797,7 @@ if st.session_state.page == "Document Upload & Chat":
             # p.start()
             # p.join()
             
-        if st.session_state["review_advisory"] is None and result:
+        if st.session_state["review_advisory"] is None:
             st.session_state["review_advisory"] = result['answer']
         
         
@@ -806,14 +807,14 @@ if st.session_state.page == "Document Upload & Chat":
         text = get_pdf_text(path)
                 
         #get the text chunks
-        #document_chunks = get_document_chunks(document)
-        text_chunks = get_text_chunks(text)
+        document_chunks = get_document_chunks(document)
+        #text_chunks = get_text_chunks(text)
     
         
-        vectorstore = get_vectorstore2(text_chunks)
+        vectorstore = get_vectorstore2(document_chunks)
         
         # Save the vector store
-        vectorstore.save_local("faiss_index_ivfflat")
+        #vectorstore.save_local("faiss_index_ivfflat")
         
         
         
@@ -877,7 +878,7 @@ if st.session_state.page == "Document Upload & Chat":
                  with message_container.chat_message("assistant", avatar="🤖"):
                      with st.spinner(":green[processing...]"):
                         if st.session_state["vector_store"] is not None:
-                            response = process_question3(
+                            response = process_question(
                               prompt, st.session_state["vector_store"]
                             )
                             st.markdown(response)
