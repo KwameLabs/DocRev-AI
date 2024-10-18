@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle as pk
 import pandas as pd
+import plotly.graph_objects as go
 import numpy as np
 import os
 import tempfile
@@ -61,7 +62,7 @@ import faiss as fs
 
 
 #OpenAI key
-os.environ['OPENAI_API_KEY'] = apikey
+os.environ['OPENAI_API_KEY'] = st.secrets["APIKEY"]
 
 ROOT_DIR = os.path.abspath(os.curdir)
 llm = openai.OpenAI(temperature=0)
@@ -69,7 +70,7 @@ pdf_docs = bytes()
 
 # logo
 
-#st.logo("images/DocRev-AI.png", icon_image="images/DocRev-AI_logo.png")
+st.logo("images/DocRev-AI_Assistant_label.png", icon_image="images/DocRev-AI_logo.png")
 
 
 
@@ -719,14 +720,6 @@ def main() -> None:
     """
     st.markdown(html, unsafe_allow_html=True)
     
-    # Render images
-    #render_image("images/DocRev-AI_header2.png")
-    #render_image("images/horizontal_blue_1.png")
-    
-    #st.markdown("<h1 style='text-align: center; color: black;'>👀 DocRev-AI</h1>", unsafe_allow_html=True)
-    #st.markdown("<h6 style='text-align: left; color: black;'>AI-Assisted Compliance Review for National Public Policy Formulation Standards in Ghana</h6>", unsafe_allow_html=True)
-
-
     load_dotenv()
     
    # Sidebar for navigation and zoom
@@ -747,13 +740,12 @@ st.session_state.page = st.sidebar.radio("Go to", ("Document Upload & Chat", "Fi
 #st.subheader("", divider="gray", anchor=False,)
 
     
-    # Sticky header
-st.markdown("<div class='main-content'>", unsafe_allow_html=True)
+
 
 # Section for system purpose and introduction
-#st.markdown("### Welcome to the AI-Assisted Public Policy Compliance Review System")
+st.markdown("### Welcome to DocRev-AI")
 st.markdown("""
-    This system helps public policy reviewers assess compliance with national standards in public policy formulation.
+    This system helps public policy reviewers in Ghana to assess compliance with national standards in public policy formulation.
     Use the sections below to upload, review, and chat with the assistant to ensure all standards are met.
 """)
 
