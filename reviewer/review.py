@@ -61,7 +61,7 @@ warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
 
 #########Initialiasation#################
-os.environ['OPENAI_API_KEY'] = st.secrets["APIKEY"]
+os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
 ROOT_DIR = os.path.abspath(os.curdir)
 #llm = openai.OpenAI(temperature=0)
 llm = ChatOpenAI(model="gpt-4",temperature=0.5)
