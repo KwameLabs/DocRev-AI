@@ -8,7 +8,7 @@ import os
 import tempfile
 import shutil
 import logging
-
+from apikey import apikey
 from langchain_community.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import openai
 from langchain.prompts import PromptTemplate
@@ -61,10 +61,10 @@ warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 
 
 #########Initialiasation#################
-os.environ['OPENAI_API_KEY'] = st.secrets["OPENAI_API_KEY"]
+os.environ['OPENAI_API_KEY'] = apikey
 ROOT_DIR = os.path.abspath(os.curdir)
 #llm = openai.OpenAI(temperature=0)
-llm = ChatOpenAI(model="gpt-4",temperature=0.5)
+llm = ChatOpenAI(model="gpt-4",temperature=1)
 pdf_docs = bytes()
 
 #########################################
@@ -248,14 +248,14 @@ def generateReviewAdvisory(file) -> str:
     query_embeddings = embedding.embed_query(query1)  # Confirm query1 is a string here
     retriever = vectorstore.as_retriever(
         search_type="mmr",
-        search_kwargs={"k": 5, "fetch_k": 5, "lambda_mult": 0.7}
+        search_kwargs={"k": 6, "fetch_k": 8, "lambda_mult": 0.7}
     )
     matched_docs = retriever.get_relevant_documents(query=query1)
     
     # Define the template for evaluating policy document compliance
     template = """
     Review the policy document and assess whether it complies with the following guidelines for public policy formulation. For each section, indicate **(passed)** if the document meets the guideline and **(not passed)** if it does not.
-    "Use the the context provided to answer the questions"
+    "Use the the context provided to answer the questions. Do not be too strict to match the exact words in the question. If for example the question ask for revision date but the context has revised date, label it as passed."
     "Context: {context} "
     1. **Cover Page Elements:**
     - Ghana Coat of Arms
@@ -557,16 +557,18 @@ elif st.session_state.page == "Final Review Advisory":
        
        
         # with st.form("Reviewer_Remarks"):
-                #     reviewer_remarks = st.text_area("Write your final comment/remarks here", placeholder="Summarize your findings and advisory...")
-                #     add_remark = st.form_submit_button("Save Remarks")
-                #     if add_remark:
-                #         final_remarks = reviewer_remarks
-                        
-        submitted = st.button("Download Review Advisory (word format)")
-        if submitted:
-            create_word_doc(result,st.session_state["file_name"])
-            st.success('File downloaded successfully.', icon="✅")  
-        
+        #             reviewer_remarks = st.text_area("Write your final comment/remarks here", placeholder="Summarize your findings and advisory...")
+        #             add_remark = st.form_submit_button("Save Remarks")
+        #             if add_remark:
+        #                 final_remarks = reviewer_remarks
+        with st.form(key='my_form'):                
+                submitted = st.form_submit_button(label="Download Review Advisory (word format)")
+                if submitted:
+                    try:
+                        create_word_doc(st.session_state["review_advisory"],st.session_state["file_name"])
+                        st.success('File downloaded successfully.', icon="✅")  
+                    except Exception as e:
+                            st.error(e, icon="⛔️")
            
         # Example of how to use the prompt with values
 
