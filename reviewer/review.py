@@ -8,7 +8,7 @@ import os
 import tempfile
 import shutil
 import logging
-from apikey import apikey
+
 from langchain_community.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import openai
 from langchain.prompts import PromptTemplate
