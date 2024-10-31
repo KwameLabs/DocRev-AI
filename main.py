@@ -46,7 +46,7 @@ def login():
 
    # st.markdown('<p class="big-font">AI Assistant for Public Policy Reviewers in Ghana</p>', unsafe_allow_html=True)
     with col1:
-        st.image('images\\rafiki2.png') 
+        st.image('images/rafiki2.png') 
 
     with col2:
         st.markdown("")
