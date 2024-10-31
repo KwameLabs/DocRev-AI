@@ -568,7 +568,7 @@ elif st.session_state.page == "Final Review Advisory":
                         create_word_doc(st.session_state["review_advisory"],st.session_state["file_name"])
                         st.success('File downloaded successfully.', icon="✅")  
                     except Exception as e:
-                            st.error(e, icon="⛔️")
+                            st.error("Download folder path not accessible.", icon="⛔️")
            
         # Example of how to use the prompt with values
 
