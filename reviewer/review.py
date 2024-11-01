@@ -142,7 +142,11 @@ def get_vectorstore2(document_chunks):
     vectorstore = faiss.FAISS.from_documents(documents=document_chunks, embedding=embeddings)
     
     vectorstore.save_local("faiss_index")
-    retriever = vectorstore.as_retriever()
+    # retriever = vectorstore.as_retriever()
+    retriever = vectorstore.as_retriever(
+        search_type="mmr",
+        search_kwargs={"k": 6, "fetch_k": 8, "lambda_mult": 0.7}
+    )
     return retriever
 
 # get response
