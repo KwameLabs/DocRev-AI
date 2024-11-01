@@ -524,7 +524,7 @@ if st.session_state.page == "Document Upload & Chat":
                             #             ):
                                 st.session_state.chat_history.append(AIMessage(ai_response)) 
             except Exception as e:
-                col2.error("Error processing prompt. Contact the Administrator of the system.", icon="⛔️")
+                col2.error("Error processing prompt. You need to upload a document to chat.", icon="⛔️")
                 logging.error(f"Error processing prompt: {e}")
         else:
              if st.session_state["vector_store"] is None:
