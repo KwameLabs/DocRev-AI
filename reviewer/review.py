@@ -64,7 +64,7 @@ warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 ROOT_DIR = os.path.abspath(os.curdir)
 #llm = openai.OpenAI(temperature=0)
-llm = ChatOpenAI(model="gpt-4",temperature=1)
+llm = ChatOpenAI(model="gpt-4o-mini",temperature=1)
 pdf_docs = bytes()
 
 #########################################
@@ -152,7 +152,7 @@ def get_vectorstore2(document_chunks):
 # get response
 def process_question2(question: str, retriever) ->str:
     
-    llm = ChatOpenAI(model="gpt-4o", temperature=0)
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     
     # """
     # Process a user question using the vector database
